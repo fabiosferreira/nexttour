@@ -1,0 +1,20 @@
+{
+  "name": "Next Tour",
+  "version": "0.0.0",
+  "homepage": "http://fabiosferreira.github.io/nexttour/",
+  "description": "Aplicação para planejamento de viagens",
+  "authors": [
+    "Fábio Ferreira"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "material-design-lite": "~1.0.6"
+  }
+}
