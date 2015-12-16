@@ -171,7 +171,7 @@ function addMarker(place) {
         console.error(status);
         return;
       }
-      console.log(result);
+      console.log(marker.icon);
       infoWindow.setContent(result.name);
       infoWindow.open(map, marker);
     });

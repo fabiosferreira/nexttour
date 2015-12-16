@@ -50,7 +50,7 @@
                     Atividade Noturna?
                   </md-checkbox>
                 </div>
-                <md-button ng-click="addTarefa()" class="md-raised md-primary botao_find">Buscar... <i class="fa fa-search botao_find"></i></md-button>
+                <md-button ng-click="buscar()" class="md-raised md-primary botao_find">Buscar... <i class="fa fa-search botao_find"></i></md-button>
                 
             </div>
           </div>
@@ -76,31 +76,10 @@
     <script src="/bower_components/angular-animate/angular-animate.js"></script>
     <script src="/bower_components/angular-material/angular-material.js"></script>
     
-
-    <script>          
-      var meuApp = angular.module( 'nexttour', [ 'ngMaterial' ] )
-              
-      meuApp.config(function($mdThemingProvider) {
-        $mdThemingProvider.theme('default')
-          .primaryPalette('blue');          
-      });
-
-      meuApp.controller('DemoCtrl',function($scope){
-        $scope.itinerario = {
-          origem: '',
-          dataCheg: null, 
-          dataPart: null,
-          categoria: 'CA',  
-          night: false
-
-        }; 
-
-        $scope.categorias = ('Parques,Comida,Religião,Fitness,Cultura,Compras,Estudos e Pesquisas').split(',').map(function(categoria) {
-        return {abbrev: categoria};
-      })
-      });
-
-    </script>
+    <!--scripts feitos utilizando angular-->
+    <script src="js/modules.js"></script>    
+    <script src="js/factory.js"></script>
+    <script src="js/controller.js"></script>
 
     <!--Script para trabalhar com a API do Google-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4Qh58sLY_GqEqczE-TQ_uY3Dl5ifXiTI&signed_in=true&libraries=places&callback=initMap" async defer></script>
@@ -109,8 +88,5 @@
     <script type="text/javascript" src="js/nearby.js"></script>
   </body>
 </html>
-
-
-
 </body>
 </html>
