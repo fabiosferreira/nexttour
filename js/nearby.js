@@ -31,14 +31,14 @@ function initMap() {
 //    center: {lat: -21.2196987, lng: -43.8041078},
     center: {lat: 12.237441, lng: -4.905296},
 
-    zoom: 3,
+    zoom: 2,
     disableDefaultUI: true         
   });
   
   
 
   var input = /** @type {!HTMLInputElement} */(
-      document.getElementById('pac-input'));
+      document.getElementById('origem'));
 
   var autocomplete = new google.maps.places.Autocomplete(input);
   autocomplete.bindTo('bounds', map);

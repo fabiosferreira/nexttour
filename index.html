@@ -1,16 +1,116 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Next Tour - Planegamento de Viagens</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta charset="utf-8">
+    <!--Estilo principal-->
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <!--Angular Material-->
+    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-  <!--Referências para utilização do Material Design lite-->
-  <link rel="stylesheet" href="/bower_components/material-design-lite/material.min.css">
-  <script src="/bower_components/material-design-lite/material.min.js"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  
 </head>
-<body>
-  Em construção!
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4Qh58sLY_GqEqczE-TQ_uY3Dl5ifXiTI&libraries=places"></script>
+    <body ng-app="nexttour" ng-controller="DemoCtrl" ng-cloak="">
+      <md-toolbar >
+        <div class="md-toolbar-tools">
+          <h2 class="md-flex"><i class="fa fa-plane"></i> Next <strong>Tour</strong></h2>
+        </div>
+      </md-toolbar>
+      
+        
+        <div layout="row" layout-xs="column" layout-margin>
+          <div flex>
+            <div flex layout-margin>
+              <h3>Planejar Viagem</h3>
+            </div>           
+            <div layout layout="column" layout-margin>
+              <md-input-container flex>
+                <label>Where are you?</label>
+                <input id="origem" class="controls" ng-model="itinerario.origem" required>
+              </md-input-container>
+            </div>
+            <div layout layout-sm="column" layout-margin layout-align="center center">
+              <md-datepicker class="data" flex-gt-xs="50" ng-model="itinerario.dataCheg" md-placeholder="Data de Chegada"></md-datepicker>
+                        
+              <md-datepicker class="data" flex-gt-xs="50" ng-model="itinerario.dataPart" md-placeholder="Data de Partida"></md-datepicker>
+            </div>
+            <div layout="" layout-wrap="" layout-sm="column">
+                
+                <md-input-container class="md-block" flex-gt-sm="45" layout-margin>
+                  <label>Categoria</label>
+                  <md-select ng-model="itinerario.categoria">
+                    <md-option ng-repeat="categoria in categorias" value="{{categoria.abbrev}}">
+                      {{categoria.abbrev}}
+                    </md-option>
+                  </md-select>
+                </md-input-container>
+               <div flex-xs="" flex="32">
+                  <md-checkbox aria-label="Atividade Noturna?" ng-model="itinerario.night" class="md-primary noite">
+                    Atividade Noturna?
+                  </md-checkbox>
+                </div>
+                <md-button ng-click="addTarefa()" class="md-raised md-primary botao_find">Buscar... <i class="fa fa-search botao_find"></i></md-button>
+                
+            </div>
+          </div>
+          <div flex>
+            <div class="container-map" flex layout-margin>
+              <div id="map"></div>                
+            </div>
+          </div>
+        </div>
+        
+          
+        
+         <!--input id="pac-input" class="controls" type="text" placeholder="Where are you?"-->
+            
+          
+    
+<!--=================================================================================
+  SCRIPTS
+  ===================================================================================-->
+    <!--Angular Material -->
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script>
+    
+
+    <script>          
+      var meuApp = angular.module( 'nexttour', [ 'ngMaterial' ] )
+              
+      meuApp.config(function($mdThemingProvider) {
+        $mdThemingProvider.theme('default')
+          .primaryPalette('blue');          
+      });
+
+      meuApp.controller('DemoCtrl',function($scope){
+        $scope.itinerario = {
+          origem: '',
+          dataCheg: null, 
+          dataPart: null,
+          categoria: 'CA',  
+          night: false
+
+        }; 
+
+        $scope.categorias = ('Parques,Comida,Religião,Fitness,Cultura,Compras,Estudos e Pesquisas').split(',').map(function(categoria) {
+        return {abbrev: categoria};
+      })
+      });
+
+    </script>
+
+    <!--Script para trabalhar com a API do Google-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4Qh58sLY_GqEqczE-TQ_uY3Dl5ifXiTI&signed_in=true&libraries=places&callback=initMap" async defer></script>
+
+    <!--Script para buscar pontos de interesse-->
+    <script type="text/javascript" src="js/nearby.js"></script>
+  </body>
+</html>
+
+
+
 </body>
 </html>
