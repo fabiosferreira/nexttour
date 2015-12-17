@@ -59,14 +59,14 @@
                <md-card-content>
                  <h3 class="label">{{$index + 1}} º Dia: ({{a.data}})</h3>
                                  
-                 <label>Atrações</label>
+                 <label>Atrações:</label>
                  <p><md-checkbox ng-repeat="p in a.local" aria-label="Checkbox 1">
                   <a ng-href="{{p.website}}" target="_blank"> {{ p.name }}</a>
                         
                  </md-checkbox></p>
-                 <label ng-show="a.comida != null">Jantar</label>
+                 <label ng-show="a.comida != null">Jantar:</label>
                  <p><md-checkbox aria-label="Checkbox 2" ng-show="a.comida != null"><a ng-href="{{a.comida.website}}" target="_blank"> {{ a.comida.name }}</a></md-checkbox></p>
-                 <label ng-show="a.noite != null">Atividade Noturno</label>
+                 <label ng-show="a.noite != null">Atividade Noturna:</label>
                  <p><md-checkbox aria-label="Checkbox 2" ng-show="a.noite != null"><a ng-href="{{a.noite.website}}" target="_blank"> {{ a.noite.name }}</a></md-checkbox></p>
                </md-card-content>               
               </md-card>
