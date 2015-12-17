@@ -19,7 +19,7 @@
       </md-toolbar>
       
         
-        <div layout="row" layout-xs="column" layout-margin>
+        <div layout="row" layout-xs="column" layout-sm="column" layout-margin>
           <div flex>
             <div flex layout-margin>
               <h3>Planejar Viagem</h3>
@@ -27,31 +27,49 @@
             <div layout layout="column" layout-margin>
               <md-input-container flex>
                 <label>Where are you?</label>
-                <input id="origem" class="controls" ng-model="itinerario.origem" required>
+                <input id="origem" class="controls" ng-model="itinerario.origem" googleplace required>
               </md-input-container>
             </div>
-            <div layout layout-sm="column" layout-margin layout-align="center center">
-              <md-datepicker class="data" flex-gt-xs="50" ng-model="itinerario.dataCheg" md-placeholder="Data de Chegada"></md-datepicker>
+            <div layout layout-md="column" layout-margin>
+              <md-datepicker class="data" flex-gt-xs="40" ng-model="itinerario.dataCheg" md-placeholder="Data de Chegada" required></md-datepicker>
                         
-              <md-datepicker class="data" flex-gt-xs="50" ng-model="itinerario.dataPart" md-placeholder="Data de Partida"></md-datepicker>
+              <md-datepicker class="data" flex-gt-xs="40" ng-model="itinerario.dataPart" md-placeholder="Data de Partida" required></md-datepicker>
+              <md-button ng-click="buscar()" class="md-raised md-primary botao_find">Buscar... <i class="fa fa-search botao_find"></i></md-button>
             </div>
-            <div layout="" layout-wrap="" layout-sm="column">
+            <!--div layout="" layout-wrap="" layout-md="column">
                 
                 <md-input-container class="md-block" flex-gt-sm="45" layout-margin>
                   <label>Categoria</label>
                   <md-select ng-model="itinerario.categoria">
-                    <md-option ng-repeat="categoria in categorias" value="{{categoria.abbrev}}">
+                    <md-option ng-click="buscar()" ng-repeat="categoria in categorias" value="{{categoria.abbrev}}">
                       {{categoria.abbrev}}
                     </md-option>
                   </md-select>
                 </md-input-container>
                <div flex-xs="" flex="32">
-                  <md-checkbox aria-label="Atividade Noturna?" ng-model="itinerario.night" class="md-primary noite">
+                  <md-checkbox ng-click="buscar()" aria-label="Atividade Noturna?" ng-model="itinerario.night" class="md-primary noite">
                     Atividade Noturna?
                   </md-checkbox>
                 </div>
-                <md-button ng-click="buscar()" class="md-raised md-primary botao_find">Buscar... <i class="fa fa-search botao_find"></i></md-button>
-                
+
+            </div-->
+            <div layout="" layout-wrap="" layout-md="row">
+              <md-card class="card" flex="100" ng-repeat="a in atividades">
+ 
+               <md-card-content>
+                 <h3 class="label">{{$index + 1}} º Dia: ({{a.data}})</h3>
+                                 
+                 <label>Atrações</label>
+                 <p><md-checkbox ng-repeat="p in a.local" aria-label="Checkbox 1">
+                  <a ng-href="{{p.website}}" target="_blank"> {{ p.name }}</a>
+                        
+                 </md-checkbox></p>
+                 <label ng-show="a.comida != null">Jantar</label>
+                 <p><md-checkbox aria-label="Checkbox 2" ng-show="a.comida != null"><a ng-href="{{a.comida.website}}" target="_blank"> {{ a.comida.name }}</a></md-checkbox></p>
+                 <label ng-show="a.noite != null">Atividade Noturno</label>
+                 <p><md-checkbox aria-label="Checkbox 2" ng-show="a.noite != null"><a ng-href="{{a.noite.website}}" target="_blank"> {{ a.noite.name }}</a></md-checkbox></p>
+               </md-card-content>               
+              </md-card>
             </div>
           </div>
           <div flex>
@@ -70,6 +88,12 @@
 <!--=================================================================================
   SCRIPTS
   ===================================================================================-->
+    <!--Script para trabalhar com a API do Google-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4Qh58sLY_GqEqczE-TQ_uY3Dl5ifXiTI&signed_in=true&libraries=places&callback=initMap" async defer></script>
+
+    <!--Script para buscar pontos de interesse-->
+    <script type="text/javascript" src="js/utils.js"></script>
+
     <!--Angular Material -->
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/angular-aria/angular-aria.js"></script>
@@ -77,15 +101,10 @@
     <script src="/bower_components/angular-material/angular-material.js"></script>
     
     <!--scripts feitos utilizando angular-->
-    <script src="js/modules.js"></script>    
+    <script src="js/modules.js"></script>   
+    <script src="js/directive.js"></script> 
     <script src="js/factory.js"></script>
-    <script src="js/controller.js"></script>
-
-    <!--Script para trabalhar com a API do Google-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4Qh58sLY_GqEqczE-TQ_uY3Dl5ifXiTI&signed_in=true&libraries=places&callback=initMap" async defer></script>
-
-    <!--Script para buscar pontos de interesse-->
-    <script type="text/javascript" src="js/nearby.js"></script>
+    <script src="js/controller.js"></script>        
   </body>
 </html>
 </body>
