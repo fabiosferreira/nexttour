@@ -178,7 +178,7 @@ meuApp.factory('placesFactory', function($rootScope){
       
       //Duas atividades por dia
       if (qtde_dias < 5){
-          for (var i = 1, x=1; i <= qtde_dias; i++, x+=2) {
+          for (var i = 1, x=0; i <= qtde_dias; i++, x+=2) {
             var dia = {     
               data: (scope.itinerario.dataCheg.getDate()+i-1)+ "/" + (scope.itinerario.dataCheg.getMonth() + 1) + "/" + scope.itinerario.dataCheg.getFullYear(),         
               local: [scope.places[x], scope.places[x+1]],
