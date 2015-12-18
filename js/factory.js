@@ -189,9 +189,9 @@ meuApp.factory('placesFactory', function($rootScope){
           }
       //Uma atividade por dia
       }else{
-          for (var i = 1; i <= qtde_dias; i++) {
+          for (var i = 0; i < qtde_dias; i++) {
             var dia = {   
-              data: (scope.itinerario.dataCheg.getDate()+i-1)+ "/" + (scope.itinerario.dataCheg.getMonth() + 1) + "/" + scope.itinerario.dataCheg.getFullYear(),         
+              data: (scope.itinerario.dataCheg.getDate()+i)+ "/" + (scope.itinerario.dataCheg.getMonth() + 1) + "/" + scope.itinerario.dataCheg.getFullYear(),         
               local: [scope.places[i]],
               comida: scope.comida[i],
               noite: scope.noite[i]
