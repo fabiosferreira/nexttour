@@ -38,3 +38,31 @@
 	text-decoration: underline;	
 	font-style: oblique;
 }
+
+#markerLayer img {
+	border: 3px solid #1976D2 !important;
+	width: 44px !important;
+	height: 44px !important;
+	border-radius: 50%;			
+}
+
+.aberto{
+	color:#4CAF50;
+}
+
+.fechado{
+	color: #F44336;
+}
+
+.imagemBox{
+	float:right; 
+	padding:5px;
+	img{
+		width: 100px !important;
+		height: 100px !important;
+	}	
+}
+
+md-checkbox.md-checked.blue .md-icon {
+ background-color: #03A9F4;
+}

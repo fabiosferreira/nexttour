@@ -14,7 +14,9 @@ meuApp.controller('DemoCtrl',function($scope, placesFactory){
   });
 
   $scope.gPlace;
+  $scope.rating = 4.2;
   $scope.places = [];
+  $scope.atracoes = [];
   $scope.comida = [];
   $scope.noite = [];
 
@@ -23,8 +25,10 @@ meuApp.controller('DemoCtrl',function($scope, placesFactory){
           center: {lat: 12.237441, lng: -4.905296},
           zoom: 2,
           disableDefaultUI: true         
-        });
-  $scope.infowindow = new google.maps.InfoWindow();
+  });
+  $scope.infowindow = new google.maps.InfoWindow({
+      content: document.getElementById('info-content')
+  });  
   $scope.marker = new google.maps.Marker({
     map: $scope.map,
     anchorPoint: new google.maps.Point(0, -29)
@@ -33,12 +37,11 @@ meuApp.controller('DemoCtrl',function($scope, placesFactory){
 
 
   $scope.adicionaLocal = function(){
-    placesFactory.adicionaLocal($scope);
+    placesFactory.adicionaLocal($scope);    
     sleep(10000);
     placesFactory.buscaComida($scope);  
-    sleep(15000);  
-    placesFactory.buscaNoite($scope);
-    sleep(10000);  
+    sleep(30000);  
+    placesFactory.buscaNoite($scope);    
   }
 
   $scope.buscar = function(){    

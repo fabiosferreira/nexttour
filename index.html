@@ -6,10 +6,10 @@
     <!--Estilo principal-->
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <!--Angular Material-->
-    <link rel="stylesheet" href="/nexttour/bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
     <!--Font Awesome-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
+    <title>Next Tour</title>
 </head>
     <body ng-app="nexttour" ng-controller="DemoCtrl" ng-cloak="">
       <md-toolbar >
@@ -60,14 +60,14 @@
                  <h3 class="label">{{$index + 1}} º Dia: ({{a.data}})</h3>
                                  
                  <label>Atrações:</label>
-                 <p><md-checkbox ng-repeat="p in a.local" aria-label="Checkbox 1">
+                 <p><md-checkbox ng-show="p.name != null" class="blue" ng-repeat="p in a.local" aria-label="Checkbox 1">
                   <a ng-href="{{p.website}}" target="_blank"> {{ p.name }}</a>
                         
                  </md-checkbox></p>
                  <label ng-show="a.comida != null">Jantar:</label>
-                 <p><md-checkbox aria-label="Checkbox 2" ng-show="a.comida != null"><a ng-href="{{a.comida.website}}" target="_blank"> {{ a.comida.name }}</a></md-checkbox></p>
+                 <p><md-checkbox class="blue" aria-label="Checkbox 2" ng-show="a.comida != null"><a ng-href="{{a.comida.website}}" target="_blank"> {{ a.comida.name }}</a></md-checkbox></p>
                  <label ng-show="a.noite != null">Atividade Noturna:</label>
-                 <p><md-checkbox aria-label="Checkbox 2" ng-show="a.noite != null"><a ng-href="{{a.noite.website}}" target="_blank"> {{ a.noite.name }}</a></md-checkbox></p>
+                 <p><md-checkbox class="blue" aria-label="Checkbox 2" ng-show="a.noite != null"><a ng-href="{{a.noite.website}}" target="_blank"> {{ a.noite.name }}</a></md-checkbox></p>
                </md-card-content>               
               </md-card>
             </div>
@@ -89,7 +89,9 @@
   SCRIPTS
   ===================================================================================-->
     <!--Script para trabalhar com a API do Google-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4Qh58sLY_GqEqczE-TQ_uY3Dl5ifXiTI&signed_in=true&libraries=places&callback=initMap" async defer></script>
+    <!--script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4Qh58sLY_GqEqczE-TQ_uY3Dl5ifXiTI&signed_in=true&libraries=places&callback=initMap" async defer></script-->
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+      
 
     <!--Script para buscar pontos de interesse-->
     <script type="text/javascript" src="js/utils.js"></script>
@@ -99,7 +101,14 @@
     <script src="/nexttour/bower_components/angular-aria/angular-aria.js"></script>
     <script src="/nexttour/bower_components/angular-animate/angular-animate.js"></script>
     <script src="/nexttour/bower_components/angular-material/angular-material.js"></script>
+
+    <!--Jquery-->
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     
+    <!--script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script-->
     <!--scripts feitos utilizando angular-->
     <script src="js/modules.js"></script>   
     <script src="js/directive.js"></script> 
