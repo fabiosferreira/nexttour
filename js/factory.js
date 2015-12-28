@@ -202,8 +202,10 @@ meuApp.factory('placesFactory', function($rootScope){
       //Duas atividades por dia
       if (qtde_dias < 5){
           for (var i = 0, x=0; i < qtde_dias; i++, x+=2) {
+            var d = scope.itinerario.dataCheg;
+            d.setDate(d.getDate() + i);
             var dia = {     
-              data: (scope.itinerario.dataCheg.getDate()+i)+ "/" + (scope.itinerario.dataCheg.getMonth() + 1) + "/" + scope.itinerario.dataCheg.getFullYear(),         
+              data: d.getDate()+ "/" + (d.getMonth() + 1) + "/" + d.getFullYear(),         
               local: [scope.places[x], scope.places[x+1]],
               comida: scope.comida[i],
               noite: scope.noite[i]
@@ -213,8 +215,10 @@ meuApp.factory('placesFactory', function($rootScope){
       //Uma atividade por dia
       }else{
           for (var i = 0; i < qtde_dias; i++) {
-            var dia = {   
-              data: (scope.itinerario.dataCheg.getDate()+i)+ "/" + (scope.itinerario.dataCheg.getMonth() + 1) + "/" + scope.itinerario.dataCheg.getFullYear(),         
+            var d = scope.itinerario.dataCheg;
+            d.setDate(d.getDate() + i);
+            var dia = {     
+              data: d.getDate()+ "/" + (d.getMonth() + 1) + "/" + d.getFullYear(),         
               local: [scope.places[i]],
               comida: scope.comida[i],
               noite: scope.noite[i]
